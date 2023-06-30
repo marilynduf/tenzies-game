@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import Die from "./components/Die";
+import Die from "./components/Die/Die";
 
 function App() {
-    const NumOfDice = 10;
-    function createDiceObj() {
+    function createDiceObj(NumOfDice) {
         const objArray = [];
         for (let i = 1; i <= NumOfDice; i++) {
             objArray.push({ id: i, value: Math.ceil(Math.random() * 6) + 1 });
@@ -12,21 +11,19 @@ function App() {
         return objArray;
     }
 
-    const diceObj = createDiceObj();
+    const diceObj = createDiceObj(10);
 
     const [dice, setDice] = useState(diceObj);
-    console.log(diceObj);
 
-    // function generateNewDice() {
-    //   setDice(dice.map(die => ({...die, value: Math.ceil(Math.random() * 6) + 1})))
-
-    // }
-    // generateNewDice()
+    const mappedDice = dice.map((die) => (
+        <Die key={die.id} value={die.value} />
+    ));
 
     return (
         <>
-            <h1>TENZIES GAME</h1>
-            <Die />
+            <h1 className="titre">TENZIES GAME</h1>
+            <p className="description">Description du jeu...</p>
+            <div className="dice">{mappedDice}</div>
         </>
     );
 }
