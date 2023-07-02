@@ -3,21 +3,21 @@ import "./App.css";
 import Die from "./components/Die/Die";
 
 function App() {
-
-
     function ramdomNumbers() {
-        return Math.ceil(Math.random() * 6)
-    } 
+        return Math.ceil(Math.random() * 6);
+    }
 
     function createDiceObj(numberOfDice) {
         const objArray = [];
         for (let i = 0; i < numberOfDice; i++) {
-            objArray.push({ id: i, value: ramdomNumbers() });
+            objArray.push({ id: i, value: ramdomNumbers(), isHeld: false });
         }
+
         return objArray;
     }
 
     const [dice, setDice] = useState(createDiceObj(10));
+    const [isHeld, setIsHeld] = useState(false);
 
     function createAllNewDice() {
         setDice((oldDice) =>
@@ -28,9 +28,19 @@ function App() {
         );
     }
 
+    function heldDie(id) {
+        setDice(
+            dice.map((die) =>
+                die.id === id ? { ...die, isHeld: !die.isHeld } : die
+            )
+        );
+    }
+
     const mappedDice = dice.map((die) => (
-        <Die key={die.id} id={die.id} value={die.value} />
+        <Die handleClick={heldDie} key={die.id} id={die.id} value={die.value} />
     ));
+
+    console.log(dice)
 
     return (
         <>

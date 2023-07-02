@@ -80,7 +80,7 @@ export default function Die(props) {
     const toDisplay = getDieFace();
 
     return (
-        <div className="die">
+        <div onClick={() => props.handleClick(props.id)} className="die">
             <div className="dot-disposition">{toDisplay}</div>
         </div>
     );
