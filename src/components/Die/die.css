@@ -1,8 +1,11 @@
 .die {
+    box-sizing: border-box;
     display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 1px solid #fff;
+    width: 60px;
+    height: 60px;
+    border: 1px solid thistle;
     border-radius: 6px;
+    padding: 10px;
     margin: 10px;
+   
 }

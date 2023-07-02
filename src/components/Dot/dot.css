@@ -1,0 +1,40 @@
+.dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: thistle;
+}
+.dot-disposition {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.dot-middle {
+    top: calc(50% - 5px);
+    left: calc(50% - 5px);
+}
+.dot-top-middle {
+    top: 0;
+    left: calc(50% - 5px);
+}
+.dot-bottom-middle {
+    bottom: 0;
+    left: calc(50% - 5px);
+}
+.dot-top-left {
+    top: 0;
+    left: 0;
+}
+.dot-top-right {
+    top: 0;
+    right: 0;
+}
+.dot-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+.dot-bottom-right {
+    bottom: 0;
+    right: 0;
+}

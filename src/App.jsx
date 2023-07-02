@@ -5,9 +5,10 @@ import Die from "./components/Die/Die";
 function App() {
     function createDiceObj(NumOfDice) {
         const objArray = [];
-        for (let i = 1; i <= NumOfDice; i++) {
-            objArray.push({ id: i, value: Math.ceil(Math.random() * 6) + 1 });
+        for (let i = 0; i < NumOfDice; i++) {
+            objArray.push({ id: i, value: Math.ceil(Math.random() * 6)});
         }
+      
         return objArray;
     }
 
@@ -16,13 +17,15 @@ function App() {
     const [dice, setDice] = useState(diceObj);
 
     const mappedDice = dice.map((die) => (
-        <Die key={die.id} value={die.value} />
+        <Die key={die.id} id={die.id} value={die.value} />
     ));
+
+    console.log(mappedDice)
 
     return (
         <>
             <h1 className="titre">TENZIES GAME</h1>
-            <p className="description">Description du jeu...</p>
+            <p className="description">But du jeu: rouler les dés le plus vite possible, le premier joueur qui reçoit tous les dés du même nombre gagne la partie</p>
             <div className="dice">{mappedDice}</div>
         </>
     );
