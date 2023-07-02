@@ -20,10 +20,7 @@ function App() {
 
     function createAllNewDice() {
         setDice((oldDice) =>
-            oldDice.map((die) => ({
-                ...die,
-                value: ramdomNumbers(),
-            }))
+            oldDice.map((die) => ( die.isHeld ?  die :  {...die, value: ramdomNumbers()}  ))
         );
     }
 
