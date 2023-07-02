@@ -70,14 +70,6 @@ export default function Die(props) {
 
     function getDieFace() {
         for (const die of diceFaces) {
-            console.log(
-                "id: " +
-                    props.id +
-                    ": face: " +
-                    die.face +
-                    ", props: " +
-                    props.value
-            );
 
             if (die.face === props.value) {
                 return die.dot;
@@ -85,11 +77,11 @@ export default function Die(props) {
         }
     }
 
-    const tiDisplay = getDieFace();
+    const toDisplay = getDieFace();
 
     return (
         <div className="die">
-            <div className="dot-disposition">{tiDisplay}</div>
+            <div className="dot-disposition">{toDisplay}</div>
         </div>
     );
 }

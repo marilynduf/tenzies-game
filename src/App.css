@@ -4,9 +4,10 @@
   text-align: center;
 }
 
-.dice {
-  display: inline-block;
-  max-width: 465px;
+.title {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin: 0;
 }
 
 .description {
@@ -15,4 +16,23 @@
   margin-bottom: 30px;
   max-width: 348px;
   text-align: center;
+}
+
+.dice {
+  display: inline-block;
+  max-width: 465px;
+}
+
+.btn-roll-dice {
+  border: none;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  color: #242424;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 15px 20px;
+  border-radius: 10px;
+  background-color: #cc5064;
+  cursor: pointer;
 }
