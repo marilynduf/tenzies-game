@@ -17,7 +17,6 @@ function App() {
     }
 
     const [dice, setDice] = useState(createDiceObj(10));
-    const [isHeld, setIsHeld] = useState(false);
 
     function createAllNewDice() {
         setDice((oldDice) =>
@@ -37,10 +36,8 @@ function App() {
     }
 
     const mappedDice = dice.map((die) => (
-        <Die handleClick={heldDie} key={die.id} id={die.id} value={die.value} />
+        <Die handleClick={heldDie} key={die.id} id={die.id} value={die.value} held={die.isHeld}/>
     ));
-
-    console.log(dice)
 
     return (
         <>
