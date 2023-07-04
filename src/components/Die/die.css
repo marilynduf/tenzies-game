@@ -1,11 +1,9 @@
 .die {
     box-sizing: border-box;
     display: inline-block;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     border: 1px solid thistle;
     border-radius: 6px;
-    padding: 10px;
-    margin: 10px;
-   
+    margin: 8px 8px 0;
 }

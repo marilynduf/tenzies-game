@@ -1,94 +1,71 @@
 import { useState } from "react";
+import { nanoid } from "nanoid";
 import "./die.css";
 import "../Dot/dot.css";
+import Dot from "../Dot/Dot";
 
 export default function Die(props) {
 
-    const bckColor = props.held ? "bckColor" : ""
-    const styles = {
-        backgroundColor: props.held ? "thistle" : ""
+    const bgDie = {
+        backgroundColor: props.held ?  "thistle" : "#242424"
     }
-    const diceFaces = [
-        {
-            face: 1,
-            dot: (
-                <>
-                    <div className={`dot dot-middle ${bckColor}`}></div>
-                </>
-            ),
-        },
-        {
-            face: 2,
-            dot: (
-                <>
-                    <div className={`dot dot-top-left ${bckColor}`}></div>
-                    <div className={`dot dot-bottom-right ${bckColor}`}></div>
-                </>
-            ),
-        },
-        {
-            face: 3,
-            dot: (
-                <>
-                    <div className={`dot dot-top-left ${bckColor}`}></div>
-                    <div className={`dot dot-middle ${bckColor}`}></div>
-                    <div className={`dot dot-bottom-right ${bckColor}`}></div>
-                </>
-            ),
-        },
-        {
-            face: 4,
-            dot: (
-                <>
-                    <div className={`dot dot-top-left ${bckColor}`}></div>
-                    <div className={`dot dot-top-right ${bckColor}`}></div>
-                    <div className={`dot dot-bottom-left ${bckColor}`}></div>
-                    <div className={`dot dot-bottom-right ${bckColor}`}></div>
-                </>
-            ),
-        },
-        {
-            face: 5,
-            dot: (
-                <>
-                    <div className={`dot dot-top-left ${bckColor}`}></div>
-                    <div className={`dot dot-top-right ${bckColor}`}></div>
-                    <div className={`dot dot-bottom-left ${bckColor}`}></div>
-                    <div className={`dot dot-bottom-right ${bckColor}`}></div>
-                    <div className={`dot dot-middle ${bckColor}`}></div>
-                </>
-            ),
-        },
-        {
-            face: 6,
-            dot: (
-                <>
-                    <div className={`dot dot-top-left ${bckColor}`}></div>
-                    <div className={`dot dot-top-middle ${bckColor}`}></div>
-                    <div className={`dot dot-top-right ${bckColor}`}></div>
-                    <div className={`dot dot-bottom-left ${bckColor}`}></div>
-                    <div className={`dot dot-bottom-middle ${bckColor}`}></div>
-                    <div className={`dot dot-bottom-right ${bckColor}`}></div>
-                </>
-            ),
-        },
-    ];
 
-   
+    const bgDot =  props.held ? "#242424" : "thistle" 
 
-    function getDieFace() {
-        for (const die of diceFaces) {
-            if (die.face === props.value) {
-                return die.dot;
-            }
+    const dotArray = [];
+    function createDice(num) {
+        const dotMatrix = {
+            1: [[50, 50]],
+
+            2: [
+                [20, 20],
+                [80, 80],
+            ],
+            3: [
+                [20, 20],
+                [50, 50],
+                [80, 80],
+            ],
+            4: [
+                [20, 20],
+                [20, 80],
+                [80, 20],
+                [80, 80],
+            ],
+            5: [
+                [20, 20],
+                [20, 80],
+                [50, 50],
+                [80, 20],
+                [80, 80],
+            ],
+            6: [
+                [20, 20],
+                [20, 50],
+                [20, 80],
+                [80, 20],
+                [80, 50],
+                [80, 80],
+            ],
+        };
+
+        for (const face of dotMatrix[num]) {
+            dotArray.push(
+                <Dot
+                    key={nanoid()}
+                    top={face[0]}
+                    left={face[1]}
+                    bgColor={bgDot}
+                />
+            );
         }
     }
 
-    const toDisplay = getDieFace();
+    createDice(props.value);
 
     return (
-        <div style={styles} onClick={() => props.handleClick(props.id)} className="die">
-            <div className="dot-disposition">{toDisplay}</div>
+        <div onClick={() => props.handleClick(props.id)} className="die" style={bgDie}>
+            <div className="dot-container" >{dotArray}</div>
         </div>
     );
 }
